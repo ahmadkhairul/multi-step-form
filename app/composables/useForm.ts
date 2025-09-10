@@ -1,9 +1,9 @@
 import { ref } from "vue";
 
 export function useForm() {
-  const yourname = ref("Stephen");
-  const email = ref("stephen@gmail.com");
-  const phone = ref("+62555444333");
+  const yourname = ref("");
+  const email = ref("");
+  const phone = ref("");
   const plan = ref({ name: "Arcade", price: 9 });
   const subscribe = ref({ name: "Monthly", modifier: 1 });
   const addon = ref([]);
