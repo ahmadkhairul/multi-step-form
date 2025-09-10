@@ -42,6 +42,8 @@ const active = ref(0);
   --color-blue-200: hsl(206, 94%, 87%);
   --color-red-500: hsl(354, 84%, 57%);
 
+  --color-grey-100: hsl(231, 11%, 95%);
+  --color-grey-200: hsl(231, 11%, 85%);
   --color-grey-500: hsl(231, 11%, 63%);
   --color-purple-200: hsl(229, 24%, 87%);
   --color-blue-100: hsl(218, 100%, 97%);
@@ -56,7 +58,7 @@ const active = ref(0);
 }
 
 body {
-  background-color: var(--color-grey-500);
+  background-color: var(--color-grey-200);
   font-family: var(--font-family);
   font-size: var(--font-size-body);
 }
@@ -68,7 +70,7 @@ body {
   border-radius: 12px;
   max-width: 900px;
   margin: 3rem auto;
-  box-shadow: 0 4px 12px var(--color-blue-950);
+  box-shadow: 0 4px 12px var(--color-grey-950);
 }
 
 .sidebar {
@@ -104,5 +106,52 @@ body {
   font-size: var(--font-size-body);
   color: var(--color-grey-500);
   margin: 0.5rem 0rem 3rem 0rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--color-blue-100);
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    flex: none;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1.5rem 0;
+    background-image: url("/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 60px;
+  }
+
+  .content {
+    flex: none;
+    margin: -2rem 1rem 1rem 1rem; /* overlap ke sidebar */
+    padding: 2rem 1.5rem;
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    margin: 0 0 5rem 0;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-subtitle {
+    margin-bottom: 1.5rem;
+  }
 }
 </style>

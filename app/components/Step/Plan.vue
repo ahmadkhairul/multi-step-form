@@ -39,12 +39,17 @@ const isYearly = computed({
       >
         <input type="radio" name="plan" :value="p" v-model="plan" />
         <NuxtImg :src="p.image" :alt="p.name" width="40" height="40" />
-        <span class="plan-title">{{ p.name }}</span>
-        <span class="plan-price">
-          ${{ p.price * subscribe.modifier }}/{{
-            subscribe.modifier === 1 ? "mo" : "yr"
-          }}
-        </span>
+        <div class="plan-description">
+          <div class="plan-title">{{ p.name }}</div>
+          <div class="plan-price">
+            ${{ p.price * subscribe.modifier }}/{{
+              subscribe.modifier === 1 ? "mo" : "yr"
+            }}
+          </div>
+          <div v-if="subscribe.modifier === 10" class="plan-bonus">
+            2 months free
+          </div>
+        </div>
       </label>
     </div>
 
@@ -68,9 +73,6 @@ const isYearly = computed({
 }
 
 .plan-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   padding: 1rem;
   border: 1px solid var(--color-purple-200);
   border-radius: 12px;
@@ -93,15 +95,25 @@ const isYearly = computed({
   background-color: var(--color-blue-100);
 }
 
+.plan-description {
+  margin: 3rem 0 0 0;
+}
+
 .plan-title {
   font-weight: var(--font-weight-bold);
   color: var(--color-blue-950);
-  margin-top: 3rem;
+  margin: 0 0 0.25rem 0;
 }
 
 .plan-price {
   font-size: 14px;
   color: var(--color-grey-500);
+  margin: 0 0 0.25rem 0;
+}
+
+.plan-bonus {
+  font-size: 14px;
+  color: var(--color-blue-950);
 }
 
 .subscribe-toggle {
@@ -173,5 +185,15 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .plan-card {
+    display: flex;
+  }
+
+  .plan-description {
+    margin: 0 1rem;
+  }
 }
 </style>

@@ -51,8 +51,13 @@ function handlePrev() {
     </div>
 
     <div class="right">
-      <button class="btn" v-if="active < 4" @click="handleNext">
-        Next Step
+      <button
+        class="btn"
+        v-if="active < 4"
+        @click="handleNext"
+        :class="{ confirm: active === 3 }"
+      >
+        {{ active === 3 ? "Confirm" : "Next Step" }}
       </button>
     </div>
   </div>
@@ -93,10 +98,8 @@ function handlePrev() {
   transition: all 0.25s ease-in-out;
 }
 
-.btn:hover {
+.btn.confirm {
   background-color: var(--color-purple-600);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn.outline {
@@ -106,11 +109,58 @@ function handlePrev() {
   transition: all 0.25s ease-in-out;
 }
 
-.btn.outline:hover {
-  color: var(--color-white);
-  background-color: var(--color-blue-950);
-  border-color: var(--color-blue-950);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+@media (max-width: 768px) {
+  .btn-action {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+
+  .left {
+    flex: none;
+  }
+
+  .right {
+    flex: 1;
+  }
+
+  .btn {
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+  }
+
+  .btn.outline {
+    padding: 1rem 0;
+    border: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background-color: var(--color-purple-600);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn.confirm:hover {
+    background-color: var(--color-blue-300);
+  }
+
+  .btn.outline:hover {
+    color: var(--color-white);
+    background-color: var(--color-blue-950);
+    border-color: var(--color-blue-950);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 </style>

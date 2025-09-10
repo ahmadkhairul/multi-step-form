@@ -100,4 +100,28 @@ const isActive = (num: number) => {
   color: var(--color-blue-950);
   border-color: var(--color-blue-200);
 }
+
+@media (max-width: 768px) {
+  .side-menu {
+    background: transparent;
+    padding: 0;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .steps {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .tab {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .step-text {
+    display: none;
+  }
+}
 </style>
